@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.kts.cordova.catz_utils.plugin"
+        version="0.0.1">
+
+    <name>Catz native utils plugin</name>
+
+    <engines>
+        <engine name="cordova" version=">=3.4.0"/>
+    </engines>
+
+    <asset src="www/catz_utils.js" target="js/catz_utils.js"/>
+
+    <js-module src="www/catz_utils.js" name="catz_utils">
+        <clobbers target="catz_utils" />
+    </js-module>
+
+    <platform name="android">
+	
+		<preference name="BILLING_KEY" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <!-- In-App Billing Permission -->
+            <uses-permission android:name="com.android.vending.BILLING" />
+        </config-file>
+  
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CatzUtilPlugin">
+                <param name="android-package" value="com.kts.catz.utils.plugin.CatzUtilPlugin"/>
+            </feature>
+        </config-file>
+	
+		<source-file src="src/android/billing_key_param.xml" target-dir="res/values/" />
+        <config-file target="res/values/billing_key_param.xml" parent="/*">
+            <string name="billing_key_param">$BILLING_KEY</string>
+        </config-file>
+	
+	
+        <!-- In-app Billing Library -->
+        <source-file src="src/android/com/android/vending/billing/IInAppBillingService.aidl" target-dir="src/com/android/vending/billing" />
+
+        <source-file src="src/android/com/kts/catz/utils/plugin/CatzUtilPlugin.java" target-dir="src/com/kts/catz/utils/plugin/"/>
+	
+        <source-file src="src/android/com/kts/catz/utils/googlebilling/Base64.java" target-dir="src/com/kts/catz/utils/googlebilling" />
+        <source-file src="src/android/com/kts/catz/utils/googlebilling/Base64DecoderException.java" target-dir="src/com/kts/catz/utils/googlebilling" />
+        <source-file src="src/android/com/kts/catz/utils/googlebilling/IabException.java" target-dir="src/com/kts/catz/utils/googlebilling" />
+        <source-file src="src/android/com/kts/catz/utils/googlebilling/IabHelper.java" target-dir="src/com/kts/catz/utils/googlebilling" />
+        <source-file src="src/android/com/kts/catz/utils/googlebilling/IabResult.java" target-dir="src/com/kts/catz/utils/googlebilling" />
+        <source-file src="src/android/com/kts/catz/utils/googlebilling/Inventory.java" target-dir="src/com/kts/catz/utils/googlebilling" />
+        <source-file src="src/android/com/kts/catz/utils/googlebilling/Purchase.java" target-dir="src/com/kts/catz/utils/googlebilling" />
+        <source-file src="src/android/com/kts/catz/utils/googlebilling/Security.java" target-dir="src/com/kts/catz/utils/googlebilling" />
+        <source-file src="src/android/com/kts/catz/utils/googlebilling/SkuDetails.java" target-dir="src/com/kts/catz/utils/googlebilling" />
+	
+    </platform>
+
+    <platform name="ios">
+    
+        <config-file target="config.xml" parent="/widget">
+            <feature name="CatzUtilPlugin">
+                <param name="ios-package" value="CatzUtilPlugin" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CatzUtilPlugin.h" target-dir="CatzUtilPlugin"/>
+        <source-file src="src/ios/CatzUtilPlugin.m" target-dir="CatzUtilPlugin"/>
+    </platform>
+
+
+</plugin>

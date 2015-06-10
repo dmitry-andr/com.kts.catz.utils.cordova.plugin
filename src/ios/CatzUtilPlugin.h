@@ -1,5 +1,5 @@
 #import <Cordova/CDV.h>
-#import <Cordova/BFSiOSUtilityPlugin.h>
+#import "BFSiOSUtilityPlugin.h"
 
 @interface CatzUtilPlugin : CDVPlugin
 

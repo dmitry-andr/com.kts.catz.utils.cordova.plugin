@@ -61,8 +61,15 @@
             </feature>
         </config-file>
 
-        <header-file src="src/ios/CatzUtilPlugin.h" target-dir="CatzUtilPlugin"/>
-        <source-file src="src/ios/CatzUtilPlugin.m" target-dir="CatzUtilPlugin"/>
+        <header-file src="src/ios/CatzUtilPlugin.h"/>
+        <source-file src="src/ios/CatzUtilPlugin.m"/>
+        <header-file src="src/ios/BFSiOSUtilityPlugin.h"/>
+        <source-file src="src/ios/BFSiOSUtilityPlugin.mm"/>
+        <header-file src="src/ios/BFSiOSPurchViewController.h"/>
+        <source-file src="src/ios/BFSiOSPurchViewController.m"/>
+        
+        <framework src="StoreKit.framework"/>
+        
     </platform>
 
 

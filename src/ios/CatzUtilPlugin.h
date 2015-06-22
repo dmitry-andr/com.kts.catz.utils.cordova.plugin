@@ -4,5 +4,6 @@
 @interface CatzUtilPlugin : CDVPlugin
 
 - (void) checkPlugin:(CDVInvokedUrlCommand*)command;
+- (void) billingPurchaseProduct:(CDVInvokedUrlCommand*)command;
 
 @end

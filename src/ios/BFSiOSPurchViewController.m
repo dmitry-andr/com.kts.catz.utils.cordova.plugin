@@ -153,6 +153,7 @@
     UnitySendMessage([_unityCallbkObjName UTF8String], [_unityCallbkMethodName UTF8String], [message UTF8String]);
 #endif
     NSLog(@"Callback params for Unity %@->%@ with message: %@",_unityCallbkObjName, _unityCallbkMethodName, message);
+    [_delegate dataFromPurchViewController:message];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

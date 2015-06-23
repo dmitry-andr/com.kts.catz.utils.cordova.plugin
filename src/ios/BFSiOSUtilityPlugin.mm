@@ -69,13 +69,16 @@ UIViewController *UnityGetGLViewController();
 }
 */
 
+
+
 //this method to be used in Unity for launching purchase process
-- (int) purchaseProduct:(NSString *)productId withUnityCallbackObjectName:(NSString *)unityCallbackObjectName andUnityCallbackMethodName:(NSString *)unityCallbackMethodName
+- (int) purchaseProduct:(NSString *)productId withUnityCallbackObjectName:(NSString *)unityCallbackObjectName andUnityCallbackMethodName:(NSString *)unityCallbackMethodName andCallbackDelegate:(id<BFSiOSPurchViewControllerControllerDelegate>)delegate
 {
     _productId = productId;
     _purchaseController = [[BFSiOSPurchViewController alloc] init];
     _purchaseController.productID = _productId;
     _purchaseController.parentMainViewController = _parentController;
+    _purchaseController.delegate = delegate;
     _purchaseController.unityCallbkObjName = unityCallbackObjectName;
     _purchaseController.unityCallbkMethodName = unityCallbackMethodName;
     [[SKPaymentQueue defaultQueue] addTransactionObserver:_purchaseController];
@@ -142,7 +145,7 @@ extern "C"{
     
     void _purchaseProduct(const char* productId, const char* unityCallbackObj, const char* unityCallbackMethod)
     {
-        [bfsPlugin purchaseProduct: CreateNSStringUtil(productId) withUnityCallbackObjectName:CreateNSStringUtil(unityCallbackObj) andUnityCallbackMethodName:CreateNSStringUtil(unityCallbackMethod)];
+        [bfsPlugin purchaseProduct: CreateNSStringUtil(productId) withUnityCallbackObjectName:CreateNSStringUtil(unityCallbackObj) andUnityCallbackMethodName:CreateNSStringUtil(unityCallbackMethod) andCallbackDelegate:NULL];
     }
     
     

@@ -22,7 +22,7 @@
 
 
 //- (int)purchaseProduct:(NSString *)productId;
-- (int)purchaseProduct:(NSString *)productId withUnityCallbackObjectName:(NSString *) unityCallbackObjectName andUnityCallbackMethodName:(NSString *) unityCallbackMethodName;
+- (int)purchaseProduct:(NSString *)productId withUnityCallbackObjectName:(NSString *) unityCallbackObjectName andUnityCallbackMethodName:(NSString *) unityCallbackMethodName andCallbackDelegate:(id<BFSiOSPurchViewControllerControllerDelegate>)delegate;
 - (NSString *)getTestMessage;
 - (NSString *)getPurchOperationStatus;
 -(void) initializeUnityCallBackParams:(NSString *) callbackObjName andMethodName:(NSString *) callbackMethodName;
